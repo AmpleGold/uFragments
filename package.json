@@ -20,7 +20,9 @@
   "scripts": {
     "compile": "yarn buidler compile",
     "test": "yarn buidler test",
-    "coverage": "yarn buidler coverage"
+    "coverage": "yarn buidler coverage",
+    "format": "yarn prettier --config .prettierrc --write '**/*.ts' 'contracts/**/*.sol'",
+    "lint": "yarn solhint 'contracts/**/*.sol'"
   },
   "devDependencies": {
     "@nomiclabs/buidler": "^1.4.5",
@@ -33,6 +35,10 @@
     "chai": "^4.2.0",
     "ethereum-waffle": "^3.0.0",
     "ethers": "^5.0.0",
+    "prettier": "^2.1.1",
+    "prettier-plugin-solidity": "^1.0.0-alpha.57",
+    "solhint": "^3.2.0",
+    "solhint-plugin-prettier": "^0.0.5",
     "solidity-coverage": "^0.7.10",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
