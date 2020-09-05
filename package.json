@@ -19,7 +19,8 @@
   "author": "dev-support@ampleforth.org",
   "scripts": {
     "compile": "yarn buidler compile",
-    "test": "yarn buidler test"
+    "test": "yarn buidler test",
+    "coverage": "yarn buidler coverage"
   },
   "devDependencies": {
     "@nomiclabs/buidler": "^1.4.5",
@@ -32,6 +33,7 @@
     "chai": "^4.2.0",
     "ethereum-waffle": "^3.0.0",
     "ethers": "^5.0.0",
+    "solidity-coverage": "^0.7.10",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
