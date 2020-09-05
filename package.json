@@ -17,19 +17,26 @@
   },
   "license": "ISC",
   "author": "dev-support@ampleforth.org",
-  "scripts": {},
+  "scripts": {
+    "compile": "yarn buidler compile",
+    "test": "yarn buidler test"
+  },
   "devDependencies": {
-    "@nomiclabs/buidler": "^1.4.4",
+    "@nomiclabs/buidler": "^1.4.5",
     "@nomiclabs/buidler-ethers": "^2.0.0",
-    "@nomiclabs/buidler-waffle": "^2.0.0",
+    "@nomiclabs/buidler-waffle": "^2.1.0",
+    "@openzeppelin/buidler-upgrades": "^1.0.2",
     "@types/chai": "^4.2.12",
     "@types/mocha": "^8.0.3",
     "@types/node": "^14.6.1",
     "chai": "^4.2.0",
     "ethereum-waffle": "^3.0.0",
     "ethers": "^5.0.0",
-    "openzeppelin-eth": "2.0.2",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "openzeppelin-eth": "2.0.2",
+    "zos-lib": "2.0.0"
   }
 }
