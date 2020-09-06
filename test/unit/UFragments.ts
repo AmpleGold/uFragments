@@ -2,13 +2,13 @@ import { ethers, upgrades } from '@nomiclabs/buidler'
 import { Contract, Signer, BigNumber } from 'ethers'
 import { expect } from 'chai'
 
-const DECIMALS = 9
-const INTIAL_SUPPLY = ethers.utils.parseUnits('50', 6 + DECIMALS)
-const transferAmount = ethers.utils.parseUnits('10', DECIMALS)
-const unitTokenAmount = ethers.utils.parseUnits('1', DECIMALS)
-
 const toUFrgDenomination = (ample: string): BigNumber =>
   ethers.utils.parseUnits(ample, DECIMALS)
+
+const DECIMALS = 9
+const INITIAL_SUPPLY = ethers.utils.parseUnits('50', 6 + DECIMALS)
+const transferAmount = toUFrgDenomination('10')
+const unitTokenAmount = toUFrgDenomination('1')
 
 let accounts: Signer[],
   deployer: Signer,
@@ -47,12 +47,12 @@ describe('UFragments:Initialization', () => {
 
   it('should transfer 50M uFragments to the deployer', async function () {
     expect(await uFragments.balanceOf(await deployer.getAddress())).to.eq(
-      INTIAL_SUPPLY,
+      INITIAL_SUPPLY,
     )
   })
 
   it('should set the totalSupply to 50M', async function () {
-    expect(initialSupply).to.eq(INTIAL_SUPPLY)
+    expect(await uFragments.totalSupply()).to.eq(INITIAL_SUPPLY)
   })
 
   it('should set the owner', async function () {
@@ -138,7 +138,7 @@ describe('UFragments:Rebase:accessControl', async () => {
 describe('UFragments:Rebase:Expansion', async () => {
   // Rebase +5M (10%), with starting balances A:750 and B:250.
   let A: Signer, B: Signer, policy: Signer
-  const rebaseAmt = INTIAL_SUPPLY.div(10)
+  const rebaseAmt = INITIAL_SUPPLY.div(10)
 
   before('setup UFragments contract', async function () {
     await setupContracts()
@@ -276,7 +276,7 @@ describe('UFragments:Rebase:NoChange', function () {
 describe('UFragments:Rebase:Contraction', function () {
   // Rebase -5M (-10%), with starting balances A:750 and B:250.
   let A: Signer, B: Signer, policy: Signer
-  const rebaseAmt = INTIAL_SUPPLY.div(10)
+  const rebaseAmt = INITIAL_SUPPLY.div(10)
 
   before('setup UFragments contract', async function () {
     await setupContracts()
